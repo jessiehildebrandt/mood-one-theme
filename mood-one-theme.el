@@ -1,7 +1,7 @@
 ;;; mood-one-theme.el --- A dark color scheme inspired by the Doom One theme. -*- lexical-binding: t; -*-
 
-;; Author: Jessie Hildebrandt
-;; Homepage: https://jessieh.net
+;; Author: Jessie Hildebrandt <jessieh.net>
+;; Homepage: https://gitlab.com/jessieh/mood-one-theme
 ;; Keywords: mode-line faces
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.4"))
