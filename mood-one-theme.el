@@ -68,6 +68,7 @@
 ;; Helper functions
 ;;
 
+;;;###autoload
 (defun mood-one-theme--true-color-p ()
   "Return 't' if the frame is capable of displaying true colors."
   (or
@@ -663,6 +664,7 @@
 ;; Fringe bitmap function
 ;;
 
+;;;###autoload
 (defun mood-one-theme-enable-fringe-bmps ()
   "Enables custom fringe bitmap images for supported packages and modes."
   (require 'mood-one-theme-fringe))
