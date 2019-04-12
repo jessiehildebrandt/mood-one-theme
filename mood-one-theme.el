@@ -49,6 +49,7 @@
 
 ;;
 ;; Config
+;;
 
 (defgroup mood-one-theme nil
   "A dark color scheme inspired by the Doom One theme."
