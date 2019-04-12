@@ -225,7 +225,7 @@
    `(dired-flagged ((,class (:foreground ,red))))
    `(dired-header ((,class (:foreground ,blue :weight bold))))
    `(dired-mark ((,class (:foreground ,orange :weight bold))))
-   `(dired marked ((,class (:foreground ,magenta :weight bold))))
+   `(dired-marked ((,class (:foreground ,magenta :weight bold))))
    `(dired-perm-write ((,class (:foreground ,fg :underline t))))
    `(dired-symlink ((,class (:foreground ,cyan :weight bold))))
    `(dired-warning ((,class (:foreground ,yellow))))
