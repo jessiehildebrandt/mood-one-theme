@@ -69,7 +69,6 @@
 ;; Helper functions
 ;;
 
-;;;###autoload
 (defun mood-one-theme--true-color-p ()
   "Return 't' if the frame is capable of displaying true colors."
   (or
