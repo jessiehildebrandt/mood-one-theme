@@ -8,6 +8,20 @@
 ;;; Code:
 
 ;;
+;; Variable declarations
+;;
+
+(defvar diff-hl--custom-bmp)
+(defvar diff-hl-fringe-bmp-function)
+
+;;
+;; Function prototypes
+;;
+
+(declare-function mood-one-theme--diff-hl-bmp-fn (_type _pos))
+(declare-function flycheck-define-error-level (level &rest properties))
+
+;;
 ;; Define fringe bitmaps
 ;;
 
