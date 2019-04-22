@@ -669,11 +669,11 @@
 
 ;; diff-hl fringe bitmap
 (defvar mood-one-theme--diff-hl-bmp
-  "Fringe bitmap for use with `diff-hl'."
   (define-fringe-bitmap 'mood-one-theme--diff-hl-bmp
     (vector #b11100000)
     1 8
-    '(center t)))
+    '(center t))
+  "Fringe bitmap for use with `diff-hl'.")
 
 ;;;###autoload
 (defun mood-one-theme-diff-hl-fringe-bmp-function (_type _pos)
