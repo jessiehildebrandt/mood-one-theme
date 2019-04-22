@@ -18,8 +18,11 @@
 ;; * Custom fringe bitmaps for diff-hl and flycheck
 ;; * Lightweight with no dependencies
 ;;
-;; To enable custom fringe bitmaps:
-;; (mood-one-theme-enable-fringe-bmps)
+;; To enable custom fringe bitmaps for `diff-hl':
+;; (setq diff-hl-fringe-bmp-function #'mood-one-theme--diff-hl-bmp-fn)
+;;
+;; To enable custom fringe bitmaps for `flycheck':
+;; (eval-after-load 'flycheck #'mood-one-theme-flycheck-fringe-bmp-enable)
 
 ;;; License:
 ;;
@@ -661,13 +664,38 @@
    ))
 
 ;;
-;; Fringe bitmap function
+;; Fringe bitmap functions
 ;;
 
+;; diff-hl fringe bitmap
+(defvar mood-one-theme--diff-hl-bmp
+  "Fringe bitmap for use with `diff-hl'."
+  (define-fringe-bitmap 'mood-one-theme--diff-hl-bmp
+    (vector #b11100000)
+    1 8
+    '(center t)))
+
 ;;;###autoload
-(defun mood-one-theme-enable-fringe-bmps ()
-  "Enables custom fringe bitmap images for supported packages and modes."
-  (require 'mood-one-theme-fringe))
+(defun mood-one-theme-diff-hl-fringe-bmp-function (_type _pos)
+  "Fringe bitmap function for use as `diff-hl-fringe-bmp-function'."
+  mood-one-theme--diff-hl-bmp)
+
+;; flycheck fringe bitmap
+(define-fringe-bitmap 'mood-one-theme--flycheck-bmp
+  (vector #b11100000
+          #b11110000
+          #b11111000
+          #b11111100
+          #b11111000
+          #b11110000
+          #b11100000))
+
+;;;###autoload
+(defun mood-one-theme-flycheck-fringe-bmp-enable ()
+  "Enable custom mood-one fringe bitmaps for use in `flycheck-mode'."
+  (dolist (level '(warning error info))
+    (setf (get level 'flycheck-fringe-bitmap-double-arrow)
+          'mood-one-theme--flycheck-bmp)))
 
 ;;
 ;; Register theme folder location
