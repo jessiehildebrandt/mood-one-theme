@@ -1,6 +1,9 @@
 # mood-one-theme
 ### Version 1.0.2
 
+[![MELPA](https://melpa.org/packages/mood-one-theme-badge.svg)](https://melpa.org/#/mood-one-theme)
+[![MELPA Stable](https://stable.melpa.org/packages/mood-one-theme-badge.svg)](https://stable.melpa.org/#/mood-one-theme)
+
 ## About
 
 `mood-one-theme` is a dark color scheme that aims to replicate some of the features of the Doom One theme.
