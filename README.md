@@ -16,6 +16,10 @@
 
 * Lightweight with no dependencies
 
+## Preview
+
+![Preview Image](https://gitlab.com/jessieh/mood-one-theme/raw/assets/mood-one-theme.png "Preview Image")
+
 ## Configuration
 
 To enable the custom fringe bitmaps, place this in your configuration file after loading the package:
