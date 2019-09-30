@@ -1,5 +1,5 @@
 # mood-one-theme
-### Version 1.0.3
+### Version 1.0.4
 
 [![MELPA](https://melpa.org/packages/mood-one-theme-badge.svg)](https://melpa.org/#/mood-one-theme)
 [![MELPA Stable](https://stable.melpa.org/packages/mood-one-theme-badge.svg)](https://stable.melpa.org/#/mood-one-theme)
@@ -12,7 +12,7 @@
 
 * Beautiful dark color scheme inspired by the Doom One theme
 
-* Custom fringe bitmaps for diff-hl and flycheck
+* Custom fringe bitmaps for diff-hl, flycheck, and flymake
 
 * Lightweight with no dependencies
 

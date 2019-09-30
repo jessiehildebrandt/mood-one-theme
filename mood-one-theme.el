@@ -3,7 +3,8 @@
 ;; Author: Jessie Hildebrandt <jessieh.net>
 ;; Homepage: https://gitlab.com/jessieh/mood-one-theme
 ;; Keywords: mode-line faces
-;; Version: 1.0.3
+;; Package-Version: 20190911.2031
+;; Version: 1.0.4
 ;; Package-Requires: ((emacs "24.4"))
 
 ;; This file is not part of GNU Emacs.
@@ -15,14 +16,17 @@
 ;;
 ;; Features offered:
 ;; * Beautiful dark color scheme inspired by the Doom One theme
-;; * Custom fringe bitmaps for diff-hl and flycheck
+;; * Custom fringe bitmaps for diff-hl, flycheck, and flymake
 ;; * Lightweight with no dependencies
 ;;
 ;; To enable custom fringe bitmaps for `diff-hl':
-;; (setq diff-hl-fringe-bmp-function #'mood-one-theme--diff-hl-fringe-bmp-function)
+;; (setq diff-hl-fringe-bmp-function #'mood-one-theme-diff-hl-fringe-bmp-function)
 ;;
 ;; To enable custom fringe bitmaps for `flycheck':
 ;; (eval-after-load 'flycheck #'mood-one-theme-flycheck-fringe-bmp-enable)
+;;
+;; To enable custom fringe bitmaps for `flymake':
+;; (eval-after-load 'flymake #'mood-one-theme-flymake-fringe-bmp-enable)
 
 ;;; License:
 ;;
@@ -662,8 +666,8 @@
   "Fringe bitmap function for use as `diff-hl-fringe-bmp-function'."
   mood-one-theme--diff-hl-bmp)
 
-;; flycheck fringe bitmap
-(define-fringe-bitmap 'mood-one-theme--flycheck-bmp
+;; flycheck/flymake fringe bitmap
+(define-fringe-bitmap 'mood-one-theme--arrow-bmp
   (vector #b11100000
           #b11110000
           #b11111000
@@ -677,7 +681,15 @@
   "Enable custom mood-one fringe bitmaps for use with flycheck."
   (dolist (level '(warning error info))
     (setf (get level 'flycheck-fringe-bitmap-double-arrow)
-          'mood-one-theme--flycheck-bmp)))
+          'mood-one-theme--arrow-bmp)))
+
+;;;###autoload
+(defun mood-one-theme-flymake-fringe-bmp-enable ()
+  "Enable custom mood-one fringe bitmaps for use with flymake."
+  (progn
+    (setq-default flymake-error-bitmap '(mood-one-theme--arrow-bmp compilation-error))
+    (setq-default flymake-warning-bitmap '(mood-one-theme--arrow-bmp compilation-warning))
+    (setq-default flymake-note-bitmap '(mood-one-theme--arrow-bmp compilation-info))))
 
 ;;
 ;; Register theme folder location
