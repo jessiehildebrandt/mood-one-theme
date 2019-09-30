@@ -30,6 +30,9 @@ To enable custom fringe bitmaps for [diff-hl](https://github.com/dgutov/diff-hl)
 To enable custom fringe bitmaps for [flycheck](https://www.flycheck.org/en/latest/):
 `(eval-after-load 'flycheck #'mood-one-theme-flycheck-fringe-bmp-enable)`
 
+To enable custom fringe bitmaps for [flymake](https://www.emacswiki.org/emacs/FlyMake):
+`(eval-after-load 'flymake #'mood-one-theme-flymake-fringe-bmp-enable)`
+
 ## Known Issues
 
 * No known issues.
