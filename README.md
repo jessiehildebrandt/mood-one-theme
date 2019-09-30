@@ -24,7 +24,11 @@
 
 To enable the custom fringe bitmaps, place this in your configuration file after loading the package:
 
-`(mood-one-theme-enable-fringe-bmps)`
+To enable custom fringe bitmaps for [diff-hl](https://github.com/dgutov/diff-hl):
+`(setq diff-hl-fringe-bmp-function #'mood-one-theme-diff-hl-fringe-bmp-function)`
+
+To enable custom fringe bitmaps for [flycheck](https://www.flycheck.org/en/latest/):
+`(eval-after-load 'flycheck #'mood-one-theme-flycheck-fringe-bmp-enable)`
 
 ## Known Issues
 
