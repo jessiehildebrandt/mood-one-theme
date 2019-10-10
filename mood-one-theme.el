@@ -287,6 +287,9 @@
    ;; linum
    `(linum ((,class (:inherit 'line-number))))
 
+   ;; make-file-*-mode
+   `(makefile-targets ((,class (:foreground ,blue))))
+
    ;; message
    `(message-header-name ((,class (:foreground ,green))))
    `(message-header-subject ((,class (:foreground ,blue :weight bold))))
@@ -320,7 +323,9 @@
    `(window-divider-first-pixel ((,class (:inherit 'window-divider))))
    `(window-divider-last-pixel ((,class (:inherit 'window-divider))))
 
+   ;; ===============================
    ;; -- external packages/plugins --
+   ;; ===============================
 
    ;; anzu
    `(anzu-mode-line ((,class (:foreground ,blue))))
@@ -584,7 +589,12 @@
    ;; smartparens
    `(sp-pair-overlay-face ((,class (:background ,base-4))))
    `(sp-show-pair-match-face ((,class (:inherit 'show-paren-match))))
-   `(sp-show-pair-mismatch-face ((,class (:inheirt 'show-paren-mismatch))))
+   `(sp-show-pair-mismatch-face ((,class (:inherit 'show-paren-mismatch))))
+
+   ;; solaire-mode
+   `(solaire-default-face ((,class (:inherit 'default :background ,bg-alt))))
+   `(solaire-hl-line-face ((,class (:inherit 'hl-line :background ,bg))))
+   `(solaire-org-hide-face ((,class (:foreground ,bg-alt))))
 
    ;; swiper
    `(swiper-line-face ((,class (:background ,blue :foreground ,base-0))))
