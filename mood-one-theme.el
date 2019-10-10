@@ -3,8 +3,7 @@
 ;; Author: Jessie Hildebrandt <jessieh.net>
 ;; Homepage: https://gitlab.com/jessieh/mood-one-theme
 ;; Keywords: mode-line faces
-;; Package-Version: 20190911.2031
-;; Version: 1.0.4
+;; Version: 1.0.5
 ;; Package-Requires: ((emacs "24.4"))
 
 ;; This file is not part of GNU Emacs.
@@ -17,7 +16,11 @@
 ;; Features offered:
 ;; * Beautiful dark color scheme inspired by the Doom One theme
 ;; * Custom fringe bitmaps for diff-hl, flycheck, and flymake
+;; * Custom configuration for neotree
 ;; * Lightweight with no dependencies
+;;
+;; To enable custom configuration for `neotree':
+;; (eval-after-load 'neotree #'mood-one-theme-neotree-configuration-enable)
 ;;
 ;; To enable custom fringe bitmaps for `diff-hl':
 ;; (setq diff-hl-fringe-bmp-function #'mood-one-theme-diff-hl-fringe-bmp-function)
@@ -550,9 +553,9 @@
    `(nav-flash-face ((,class (:background ,dark-blue :foreground ,base-8 :weight bold))))
 
    ;; neotree
-   `(neo-root-dir-face ((,class (:background ,bg :foreground ,yellow :weight bold :box (:line-width 4 :color ,bg)))))
+   `(neo-root-dir-face ((,class (:background ,bg :foreground ,yellow :weight bold)))) ;;:box (:line-width 7 :color ,bg)))))
    `(neo-file-link-face ((,class (:foreground ,fg))))
-   `(neo-dir-link-face ((,class (:foreground ,blue))))
+   `(neo-dir-link-face ((,class (:foreground ,blue :weight bold))))
    `(neo-expand-btn-face ((,class (:foreground ,blue))))
    `(neo-vc-edited-face ((,class (:foreground ,yellow))))
    `(neo-vc-added-face ((,class (:foreground ,green))))
@@ -650,14 +653,71 @@
    `(whitespace-line ((,class (:background ,base-0 :foreground ,red :weight bold))))
 
    ;; yasnippet
-   `(yas-field-highlight-face ((,class (:inherit 'match))))
+   `(yas-field-highlight-face ((,class (:inherit 'match))))))
 
-   ;; -- major-mode faces --
+;;
+;; Neotree functions
+;;
 
-   ;; make-file-*-mode
-   `(makefile-targets ((,class (:foreground ,blue))))
+(defun mood-one-theme-neotree-hidden-dir-p (dirname)
+  (string-prefix-p "." dirname))
 
-   ))
+(defun mood-one-theme-neotree-hidden-file-p (filename)
+  (or (string-prefix-p "." filename)
+      (and (string-prefix-p "#" filename)
+           (string-suffix-p "#" filename))))
+
+(defun mood-one-theme-neotree-insert-root (node)
+  (insert
+   (concat
+    " "
+    (propertize
+     "🖿"
+     'face '(:inherit (neo-root-dir-face) :height 1.5))
+    (propertize
+     (concat " " (or (neo-path--file-short-name node) "-") " \n")
+     'face '(:inherit (neo-root-dir-face) :height 1.0)))))
+
+(defun mood-one-theme-neotree-insert-dir (node depth expanded)
+  (let ((short-name (neo-path--file-short-name node))
+        (face '(:inherit (neo-dir-link-face))))
+    (when (mood-one-theme-neotree-hidden-dir-p short-name)
+      (setq face '(:inherit (shadow neo-dir-link-face))))
+    (insert-char ?\s (* (- depth 1) 2))
+    (insert (propertize
+             (if expanded " ▾ 🖿 " " ▸ 🖿 ")
+             'face face))
+    (insert-button short-name
+                   'follow-link t
+                   'face face
+                   'neo-full-path node
+                   'keymap neotree-dir-button-keymap)
+    (neo-buffer--node-list-set nil node)
+    (neo-buffer--newline-and-begin)))
+
+(defun mood-one-theme-neotree-insert-file (node depth)
+  (let ((short-name (neo-path--file-short-name node))
+        (face '(:inherit (neo-file-link-face))))
+    (when (mood-one-theme-neotree-hidden-file-p short-name)
+      (setq face '(:inherit shadow neo-file-link-face)))
+    (insert-char ?\s (* (- depth 1) 2))
+    (insert (propertize "   " 'face face))
+    (insert-button short-name
+                   'follow-link t
+                   'face face
+                   'neo-full-path node
+                   'keymap neotree-file-button-keymap)
+    (neo-buffer--node-list-set nil node)
+    (neo-buffer--newline-and-begin)))
+
+;;;###autoload
+(defun mood-one-theme-neotree-configuration-enable ()
+  "Enable custom mood-one configuration for use with neotree."
+  (progn
+    (advice-add #'neo-global--select-window :after (lambda () (visual-line-mode 0) (set-window-fringes neo-global--window 0 0)))
+    (advice-add #'neo-buffer--insert-root-entry :override #'mood-one-theme-neotree-insert-root)
+    (advice-add #'neo-buffer--insert-dir-entry :override #'mood-one-theme-neotree-insert-dir)
+    (advice-add #'neo-buffer--insert-file-entry :override #'mood-one-theme-neotree-insert-file)))
 
 ;;
 ;; Fringe bitmap functions
