@@ -685,9 +685,9 @@
       (setq face '(:inherit (shadow neo-dir-link-face))))
     (insert-char ?\s (* (- depth 1) 2))
     (insert (propertize
-             (if expanded " ▾ 🖿 " " ▸ 🖿 ")
+             (if expanded " ▾ " " ▸ ")
              'face face))
-    (insert-button short-name
+    (insert-button (concat "🖿 " short-name)
                    'follow-link t
                    'face face
                    'neo-full-path node
