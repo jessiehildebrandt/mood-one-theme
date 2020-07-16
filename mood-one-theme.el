@@ -749,9 +749,7 @@
 ;;;###autoload
 (defun mood-one-theme-flycheck-fringe-bmp-enable ()
   "Enable custom mood-one fringe bitmaps for use with flycheck."
-  (dolist (level '(warning error info))
-    (setf (get level 'flycheck-fringe-bitmap-double-arrow)
-          'mood-one-theme--arrow-bmp)))
+  (flycheck-redefine-standard-error-levels nil 'mood-one-theme--arrow-bmp))
 
 ;;;###autoload
 (defun mood-one-theme-flymake-fringe-bmp-enable ()
