@@ -736,7 +736,7 @@
   "Fringe bitmap function for use as `diff-hl-fringe-bmp-function'."
   mood-one-theme--diff-hl-bmp)
 
-;; flycheck/flymake fringe bitmap
+;; flycheck/flymake fringe bitmaps
 (define-fringe-bitmap 'mood-one-theme--arrow-bmp
   (vector #b11100000
           #b11110000
@@ -745,11 +745,16 @@
           #b11111000
           #b11110000
           #b11100000))
+(defconst mood-one-theme--dot-bmp
+  (vector #b01100000
+          #b01100000)
+  "Bitmap used to overwrite flycheck's continuation fringe bitmap.")
 
 ;;;###autoload
 (defun mood-one-theme-flycheck-fringe-bmp-enable ()
   "Enable custom mood-one fringe bitmaps for use with flycheck."
-  (flycheck-redefine-standard-error-levels nil 'mood-one-theme--arrow-bmp))
+  (flycheck-redefine-standard-error-levels nil 'mood-one-theme--arrow-bmp)
+  (define-fringe-bitmap 'flycheck-fringe-bitmap-continuation mood-one-theme--dot-bmp))
 
 ;;;###autoload
 (defun mood-one-theme-flymake-fringe-bmp-enable ()
