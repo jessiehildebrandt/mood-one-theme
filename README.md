@@ -1,5 +1,5 @@
 # mood-one-theme
-### Version 1.0.5
+### Version 1.0.6
 
 [![MELPA](https://melpa.org/packages/mood-one-theme-badge.svg)](https://melpa.org/#/mood-one-theme)
 [![MELPA Stable](https://stable.melpa.org/packages/mood-one-theme-badge.svg)](https://stable.melpa.org/#/mood-one-theme)
