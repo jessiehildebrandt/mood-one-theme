@@ -138,7 +138,7 @@
    `(font-lock-doc-face ((,class (:inherit 'font-lock-comment-face :foreground ,base-6))))
    `(font-lock-constant-face ((,class (:foreground ,violet))))
    `(font-lock-function-name-face ((,class (:foreground ,magenta))))
-   `(font-lock-keyword-face ((,class (:foreground ,blue))))
+   `(font-lock-keyword-face ((,class (:inherit 'bold :foreground ,blue))))
    `(font-lock-string-face ((,class (:foreground ,green))))
    `(font-lock-type-face ((,class (:foreground ,yellow))))
    `(font-lock-variable-name-face ((,class (:foreground ,pink))))
@@ -267,7 +267,7 @@
    `(breakpoint-disabled ((, class (:foreground ,base-5))))
 
    ;; hl-line
-   `(hl-line ((,class (:background ,bg-alt))))
+   `(hl-line ((,class (:background ,bg-alt :extend t))))
 
    ;; ido
    `(ido-first-match ((,class (:foreground ,orange))))
@@ -553,9 +553,9 @@
    `(nav-flash-face ((,class (:background ,dark-blue :foreground ,base-8 :weight bold))))
 
    ;; neotree
-   `(neo-root-dir-face ((,class (:background ,bg :foreground ,yellow :weight bold)))) ;;:box (:line-width 7 :color ,bg)))))
+   `(neo-root-dir-face ((,class (:inherit 'bold :foreground ,yellow)))) ;;:box (:line-width 7 :color ,bg)))))
    `(neo-file-link-face ((,class (:foreground ,fg))))
-   `(neo-dir-link-face ((,class (:foreground ,blue :weight bold))))
+   `(neo-dir-link-face ((,class (:inherit 'bold :foreground ,blue))))
    `(neo-expand-btn-face ((,class (:foreground ,blue))))
    `(neo-vc-edited-face ((,class (:foreground ,yellow))))
    `(neo-vc-added-face ((,class (:foreground ,green))))
