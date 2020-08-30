@@ -15,9 +15,12 @@
 ;;
 ;; Features offered:
 ;; * Beautiful dark color scheme inspired by the Doom One theme
-;; * Custom fringe bitmaps for diff-hl, flycheck, and flymake
+;; * Custom fringe bitmaps for line continuations, visual-line-mode, diff-hl, flycheck, and flymake
 ;; * Custom configuration for neotree
 ;; * Lightweight with no dependencies
+;;
+;; To replace default line continuation/line wrap fringe bitmaps:
+;; (mood-one-theme-arrow-fringe-bmp-enable)
 ;;
 ;; To enable custom configuration for `neotree':
 ;; (eval-after-load 'neotree #'mood-one-theme-neotree-configuration-enable)
@@ -729,6 +732,49 @@
 ;; Fringe bitmap functions
 ;;
 
+;; arrow fringe bitmaps
+(defconst mood-one-theme--right-arrow-bmp
+  (vector #b00000000
+          #b00000000
+          #b00110000
+          #b00111000
+          #b00111100
+          #b00111000
+          #b00110000
+          #b00000000)
+  "Bitmap used to overwrite Emacs's right line-continuation fringe bitmap.")
+(defconst mood-one-theme--left-arrow-bmp
+  (vector #b00000000
+          #b00000000
+          #b00001100
+          #b00011100
+          #b00111100
+          #b00011100
+          #b00001100
+          #b00000000)
+  "Bitmap used to overwrite Emacs's left line-continuation fringe bitmap.")
+(defconst mood-one-theme--down-arrow-bmp
+  (vector #b00000000
+          #b00000000
+          #b00000000
+          #b00000000
+          #b00000000
+          #b01111110
+          #b00111100
+          #b00011000)
+  "Bitmap used to overwrite Emac's right line-wrapping fringe bitmap.")
+(defconst mood-one-theme--empty-bmp
+  (vector #b0)
+  "Bitmap used to overwrite Emac's left line-wrapping fringe bitmap.")
+
+;;;###autoload
+(defun mood-one-theme-arrow-fringe-bmp-enable ()
+  "Enable custom mood-one fringe bitmaps to replace the default line continuation and line wrap arrows."
+  (define-fringe-bitmap 'right-arrow mood-one-theme--right-arrow-bmp)
+  (define-fringe-bitmap 'left-arrow mood-one-theme--left-arrow-bmp)
+  (define-fringe-bitmap 'right-curly-arrow mood-one-theme--down-arrow-bmp)
+  (define-fringe-bitmap 'left-curly-arrow mood-one-theme--empty-bmp))
+
 ;; diff-hl fringe bitmap
 (defvar mood-one-theme--diff-hl-bmp
   (define-fringe-bitmap 'mood-one-theme--diff-hl-bmp
@@ -743,7 +789,7 @@
   mood-one-theme--diff-hl-bmp)
 
 ;; flycheck/flymake fringe bitmaps
-(define-fringe-bitmap 'mood-one-theme--arrow-bmp
+(define-fringe-bitmap 'mood-one-theme--marker-bmp
   (vector #b11100000
           #b11110000
           #b11111000
@@ -759,16 +805,16 @@
 ;;;###autoload
 (defun mood-one-theme-flycheck-fringe-bmp-enable ()
   "Enable custom mood-one fringe bitmaps for use with flycheck."
-  (flycheck-redefine-standard-error-levels nil 'mood-one-theme--arrow-bmp)
+  (flycheck-redefine-standard-error-levels nil 'mood-one-theme--marker-bmp)
   (define-fringe-bitmap 'flycheck-fringe-bitmap-continuation mood-one-theme--dot-bmp))
 
 ;;;###autoload
 (defun mood-one-theme-flymake-fringe-bmp-enable ()
   "Enable custom mood-one fringe bitmaps for use with flymake."
   (progn
-    (setq-default flymake-error-bitmap '(mood-one-theme--arrow-bmp compilation-error))
-    (setq-default flymake-warning-bitmap '(mood-one-theme--arrow-bmp compilation-warning))
-    (setq-default flymake-note-bitmap '(mood-one-theme--arrow-bmp compilation-info))))
+    (setq-default flymake-error-bitmap '(mood-one-theme--marker-bmp compilation-error))
+    (setq-default flymake-warning-bitmap '(mood-one-theme--marker-bmp compilation-warning))
+    (setq-default flymake-note-bitmap '(mood-one-theme--marker-bmp compilation-info))))
 
 ;;
 ;; Register theme folder location
