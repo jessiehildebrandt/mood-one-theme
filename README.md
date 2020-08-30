@@ -22,7 +22,14 @@
 
 ## Configuration
 
-To enable the custom fringe bitmaps, place this in your configuration file after loading the package:
+### Custom Neotree Configuration
+
+`(eval-after-load 'neotree #'mood-one-theme-neotree-configuration-enable)`
+
+### Custom Fringe Bitmaps
+
+To replace default line continuation/line wrap fringe bitmaps:
+`(mood-one-theme-arrow-fringe-bmp-enable)`
 
 To enable custom fringe bitmaps for [diff-hl](https://github.com/dgutov/diff-hl):
 `(setq diff-hl-fringe-bmp-function #'mood-one-theme-diff-hl-fringe-bmp-function)`
