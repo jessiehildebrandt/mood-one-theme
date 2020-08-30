@@ -472,13 +472,20 @@
    `(lsp-face-highlight-textual ((,class (:background ,dark-blue :foreground ,base-8 :distant-foreground ,base-0 :weight bold))))
    `(lsp-face-highlight-read ((,class (:background ,dark-blue :foreground ,base-8 :distant-foreground ,base-0 :weight bold))))
    `(lsp-face-highlight-write ((,class (:background ,dark-blue :foreground ,base-8 :distant-foreground ,base-0 :weight bold))))
+
+   ;; lsp-ui-doc
+   `(lsp-ui-doc-background ((,class (:background ,base-3))))
+   `(lsp-ui-doc-header ((,class (:background ,base-0 :bold bold :box (:line-width 5 :color ,base-0)))))
+
+   ;; lsp-ui-peek
    `(lsp-ui-peek-filename ((,class (:inherit 'mode-line-buffer-id))))
-   `(lsp-ui-peek-header ((,class (:background ,base-4 :foreground ,fg :bold bold))))
+   `(lsp-ui-peek-header ((,class (:background ,base-0 :foreground ,fg :bold bold :box (:line-width 5 :color ,base-0)))))
+   `(lsp-ui-peek-footer ((,class (:background ,base-3))))
    `(lsp-ui-peek-selection ((,class (:background ,blue :foreground ,bg :bold bold))))
    `(lsp-ui-peek-list ((,class (:background ,base-3))))
    `(lsp-ui-peek-peek ((,class (:background ,base-3))))
-   `(lsp-ui-peek-highlight ((,class (:inherit `lsp-ui-peek-header :background ,base-4 :foreground ,bg :box t))))
-   `(lsp-ui-peek-line-number ((,class (:foreground ,green))))
+   `(lsp-ui-peek-highlight ((,class (:background ,orange :foreground ,base-0))))
+   `(lsp-ui-peek-line-number ((,class (:foreground ,base-5))))
 
    ;; magit
    `(magit-bisect-bad ((,class (:foreground ,red))))
