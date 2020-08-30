@@ -597,7 +597,6 @@
    ;; solaire-mode
    `(solaire-default-face ((,class (:inherit 'default :background ,bg-alt))))
    `(solaire-hl-line-face ((,class (:inherit 'hl-line :background ,bg))))
-   `(solaire-org-hide-face ((,class (:foreground ,bg-alt))))
 
    ;; swiper
    `(swiper-line-face ((,class (:background ,blue :foreground ,base-0))))
