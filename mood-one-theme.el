@@ -490,6 +490,9 @@
    `(lsp-ui-peek-highlight ((,class (:background ,orange :foreground ,base-0))))
    `(lsp-ui-peek-line-number ((,class (:foreground ,base-5))))
 
+   ;; lsp-ui-sideline
+   `(lsp-ui-sideline ((,class (:foreground ,yellow))))
+
    ;; magit
    `(magit-bisect-bad ((,class (:foreground ,red))))
    `(magit-bisect-good ((,class (:foreground ,green))))
