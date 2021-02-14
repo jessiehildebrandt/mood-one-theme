@@ -312,6 +312,17 @@
    `(show-paren-match ((,class (:background ,base-0 :foreground ,red :weight ultra-bold))))
    `(show-paren-mismatch ((,class (:background ,red :foreground ,base-0 :weight ultra-bold))))
 
+   ;; tab-line/tab-bar
+   `(tab-line ((,class (:background ,bg-alt :foreground ,bg-alt))))
+   `(tab-line-tab ((,class (:background ,bg :foreground ,fg))))
+   `(tab-line-tab-inactive ((,class (:background ,bg-alt :foreground ,fg-alt))))
+   `(tab-line-tab-current ((,class (:background ,bg :foreground ,fg))))
+   `(tab-line-highlight ((,class (:inherit 'tab-line-tab))))
+   `(tab-line-close-highlight ((,class (:foreground ,highlight))))
+   `(tab-bar ((,class (:inherit 'tab-line))))
+   `(tab-bar-tab ((,class (:inherit 'tab-line-tab))))
+   `(tab-bar-tab-inactive ((,class (:inherit 'tab-line-tab-inactive))))
+
    ;; term
    `(term ((,class (:foreground ,fg))))
    `(term-bold ((,class (:weight bold))))
